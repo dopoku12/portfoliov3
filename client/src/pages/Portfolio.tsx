@@ -1,9 +1,13 @@
+import PageCards from "../components/PageCards"
+import Projects from "../components/Projects"
 
 type Props = {}
 
 const Portfolio = (props: Props) => {
     return (
-        <div>Portfolio</div>
+
+        <PageCards title='Portfolio' content={<Projects />} />
+
     )
 }
 

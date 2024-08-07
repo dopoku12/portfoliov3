@@ -1,8 +1,19 @@
-type Props = {}
+import { Box, List, ListItemIcon } from "@mui/material"
 
-const Nav = (props: Props) => {
+
+
+
+
+const Nav = () => {
     return (
-        <div>Nav</div>
+        <Box component='nav'>
+            <List>
+                <ListItemIcon>
+
+                </ListItemIcon>
+
+            </List>
+        </Box>
     )
 }
 

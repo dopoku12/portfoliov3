@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 
-import { Container, Card, List, ListItemButton, Link as ExLink, Divider, ListItem, Grid } from '@mui/material';
+import { Box, Container, Card, List, Link as ExLink, Divider, ListItem, ListItemIcon, ListItemText, Typography, SvgIcon } from '@mui/material';
 
 import {
   FaGithub,
@@ -13,7 +13,8 @@ import {
 import * as SI from "react-icons/si"
 
 import { ContactIcons } from './Types/IconTypes';
-
+import { useStyles, AnimatedText } from './styles/Styling';
+import Nav from './components/Nav'
 
 const contactIcons: ContactIcons[] = [
   {
@@ -37,46 +38,80 @@ const contactIcons: ContactIcons[] = [
   {
     icons: FaRegEnvelope,
     label: 'EMAIL',
-    text: 'Download',
+    text: 'dopoku.tech@gmail.com',
     pathName: "mailto:dopoku.tech@gmail.com",
   },
-
 ]
+
+const socialLinks = contactIcons.filter(i => i.socialIcons).map(
+  (i, index) => (
+    <ListItemIcon key={index}  >
+      <ExLink href={i.pathName} target='_blank' >
+        <i.socialIcons />
+      </ExLink>
+    </ListItemIcon>
+  ));
+
+const informational = contactIcons.filter(i => i.icons).map((i, index) => (
+  <ListItem key={index} sx={{ ...useStyles.layout, justifyContent: "space-evenly", alignItems: "baseline" }} >
+    <ListItemText primary={i.label} />
+    {
+      i.pathName ?
+        <ListItemIcon >
+          <ExLink href={i.pathName} sx={{ ...useStyles.layout, flexDirection: 'row' }}>
+            <ListItemText secondary={i.text} sx={{ marginRight: 2 }} />
+            <i.icons />
+          </ExLink>
+        </ListItemIcon>
+        : <ListItemIcon sx={{ ...useStyles.layout, flexDirection: 'row' }}>
+
+          <ListItemText secondary={i.text} sx={{ marginRight: 1 }} />
+          <i.icons />
+        </ListItemIcon>
+    }
+  </ListItem>
+));
 
 function App() {
 
   return (
-    <Container>
-      <Card sx={{ display: 'grid', gridRow: "auto", alignItems: 'center' }}>
-        <FaCode />
-        <List sx={
-          { display: 'grid', gridColumn: "auto", alignItems: "center" }
-        }>
-          {
-            contactIcons.filter(i => i.socialIcons).map((i, index) =>
-            (
-              <Grid item gridTemplateColumns={3}>
-                <ListItemButton key={index}>
-                  <ExLink href={i.pathName} target='_blank'>
-                    <i.socialIcons />
-                  </ExLink>
-                </ListItemButton>
-              </Grid>
-            ))
-          }
+    <Container sx={useStyles.layout}>
+      <Card >
+        <Box sx={useStyles.layout} component='header'>
 
-          <Divider component='li' />
+          <Typography variant='h5' gutterBottom>
+            David Opoku
+          </Typography>
+
+          <Typography>
+            <AnimatedText /> Solutions
+          </Typography>
+
+          {/* 
+          <Typography variant='h7' className=" typewriter">
+            👋🏿 Hi I'm David, I turn dreams and visions into code.
+          </Typography> */}
+
+          <List>
+            {
+              socialLinks
+            }
+          </List>
+        </Box>
+
+        <Divider component='li' />
+        <List sx={{ ...useStyles.layout, justifyContent: "space-evenly" }}>
           {
-            contactIcons.filter(i => i.icons).map((i, index) => (
-              <ListItem>
-                <i.icons />
-              </ListItem>
-            ))
+            informational
           }
         </List>
       </Card>
 
-      <Outlet context={SI} />
+      <Card>
+        <Nav />
+        <Divider />
+        <Outlet context={SI} />
+      </Card>
     </Container >
   )
 }
