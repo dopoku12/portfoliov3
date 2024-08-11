@@ -1,6 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
-import { Box, Container, Card, List, Link as ExLink, Divider, ListItem, ListItemIcon, ListItemText, Typography, SvgIcon } from '@mui/material';
+import { Box, Container, Card, List, Link as ExLink, Divider, ListItem, ListItemIcon, ListItemText, Typography, } from '@mui/material';
 
 import {
   FaGithub,
@@ -8,15 +8,14 @@ import {
   FaLinkedin,
   FaLocationDot,
   FaDownload,
-  FaCode,
 } from "react-icons/fa6"
 import * as SI from "react-icons/si"
 
-import { ContactIcons } from './Types/IconTypes';
+import { IconnName } from './Types/IconTypes';
 import { useStyles, AnimatedText } from './styles/Styling';
 import Nav from './components/Nav'
 
-const contactIcons: ContactIcons[] = [
+const contactIcons: IconnName[] = [
   {
     socialIcons: FaLinkedin,
     pathName: "https://www.linkedin.com/in/david-opoku-7008721b7/",
@@ -76,7 +75,7 @@ function App() {
 
   return (
     <Container sx={useStyles.layout}>
-      <Card >
+      <Card component='section'>
         <Box sx={useStyles.layout} component='header'>
 
           <Typography variant='h5' gutterBottom>
@@ -107,7 +106,7 @@ function App() {
         </List>
       </Card>
 
-      <Card>
+      <Card sx={{margin:5}} component='section'>
         <Nav />
         <Divider />
         <Outlet context={SI} />

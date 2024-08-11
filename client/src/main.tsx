@@ -8,6 +8,7 @@ import Portfolio from './pages/Portfolio.tsx'
 import Errorpage from './pages/ErrorPage.tsx'
 import Resume from './pages/Resume.tsx'
 import Contact from './pages/Contact.tsx'
+import Aboutme from './pages/AboutMe.tsx'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/Portfolio',
         element: <Portfolio />
+      },
+      {
+        path: '/About',
+        element: <Aboutme />
       },
       {
         path: '/Resume',
