@@ -1,19 +1,21 @@
-import { Card, Divider, Typography } from '@mui/material'
+import { Box, Divider, Typography } from '@mui/material'
 
 
 type PageCardProps = {
-    title: string,
-    content: JSX.Element | string
+
+    [key:string]: JSX.Element | string
 
 }
 
 export default function PageCards({ title, content }: PageCardProps) {
     return (
-
-        <Typography component='h2'>
+<Box component='article'>
+        <Typography component='h1'>
             {title}
         </Typography>
 
+{content}
 
+</Box>
     )
 }

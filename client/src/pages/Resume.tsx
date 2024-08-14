@@ -1,9 +1,11 @@
+import PageCards from "../components/PageCards";
+
 type Props = {}
 
 const Resume = (props: Props) => {
     return (
-        <div>Resume</div>
+        <PageCards title='Resume'/>
     )
 }
 
-export default Resume
+export default Resume;

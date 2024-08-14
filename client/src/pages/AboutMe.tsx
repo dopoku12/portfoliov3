@@ -1,8 +1,10 @@
+import PageCards from "../components/PageCards"
+
 type Props = {}
 
 const Aboutme = (props: Props) => {
     return (
-        <div>Aboutme</div>
+    <PageCards title='About Me'/>
     )
 }
 

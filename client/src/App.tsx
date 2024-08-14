@@ -14,6 +14,7 @@ import * as SI from "react-icons/si"
 import { IconnName } from './Types/IconTypes';
 import { useStyles, AnimatedText } from './styles/Styling';
 import Nav from './components/Nav'
+import { grey } from '@mui/material/colors';
 
 const contactIcons: IconnName[] = [
   {
@@ -58,7 +59,7 @@ const informational = contactIcons.filter(i => i.icons).map((i, index) => (
       i.pathName ?
         <ListItemIcon >
           <ExLink href={i.pathName} sx={{ ...useStyles.layout, flexDirection: 'row' }}>
-            <ListItemText secondary={i.text} sx={{ marginRight: 2 }} />
+            <ListItemText  secondary={i.text} sx={{ marginRight: 2 }} />
             <i.icons />
           </ExLink>
         </ListItemIcon>
@@ -74,16 +75,16 @@ const informational = contactIcons.filter(i => i.icons).map((i, index) => (
 function App() {
 
   return (
-    <Container sx={useStyles.layout}>
+    <Container>
       <Card component='section'>
         <Box sx={useStyles.layout} component='header'>
 
-          <Typography variant='h5' gutterBottom>
+          <Typography sx={useStyles.layout} variant='h5' gutterBottom>
             David Opoku
-          </Typography>
 
-          <Typography>
-            <AnimatedText /> Solutions
+          <Typography variant='subtitle2' color='grey'>
+        DevOps | Power User | Software Engineer 
+          </Typography>
           </Typography>
 
           {/* 
@@ -106,7 +107,7 @@ function App() {
         </List>
       </Card>
 
-      <Card sx={{margin:5}} component='section'>
+      <Card sx={{marginTop:4}} component='section'>
         <Nav />
         <Divider />
         <Outlet context={SI} />
