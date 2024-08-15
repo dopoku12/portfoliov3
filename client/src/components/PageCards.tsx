@@ -1,5 +1,5 @@
 import { Box, Divider, Typography } from '@mui/material'
-
+import React from 'react'
 
 type PageCardProps = {
 
@@ -14,7 +14,7 @@ export default function PageCards({ title, content }: PageCardProps) {
             {title}
         </Typography>
 
-{content}
+  <Typography>{content}</Typography>
 
 </Box>
     )

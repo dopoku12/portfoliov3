@@ -1,7 +1,10 @@
 import { ImageList, ImageListItem, Link as ExLink, ImageListItemBar } from "@mui/material";
 
+import { useState } from "react";
+import { useStyles } from "../styles/Styling";
 export default function Projects() {
-    const projectLi = [
+   let [projectState,setProjectState]=useState(
+     [
       {
          
          imgName: "/projects/country-wiz.png",
@@ -55,22 +58,51 @@ export default function Projects() {
          description: `A weather search app`,
          summary: "Check the weather in your city as well as other cities",
       },
-   ].map((i,index)=>(<ImageList>
-<ImageListItem key={index}>
+   ].map((i)=>({...i,hoverState:false}))
+)
+const handelHoverOn=(elmIndex:number)=>{
+  
+setProjectState((prevState)=>{
+  
+  return prevState.map((item, index) => index === elmIndex? { ...item, hoverState: true } :item
+         
+      
+   )
+  })
+}
+
+const handelHoverOff = (elmIndex: number) => {
+  setProjectState((prevState) => {
+    return prevState.map((item, index) => index === elmIndex ?{ ...item, hoverState: false }: item
+      
+    );
+  });
+};
+
+  return (
+<ImageList sx={useStyles.layout}>{
+   projectState.map((i,index)=>(
+<ImageListItem key={index} sx={{width:'55vw'}} 
+onMouseEnter={()=>handelHoverOn(index)} 
+onMouseLeave={()=>handelHoverOff(index)}
+>
     <ExLink href={i.link} >
-    <img
+       </ExLink>
+    <img 
+     width={100}
     src={i.imgName}
     alt={i.description}/>
-    </ExLink>
-
+{
+i.hoverState&&
     <ImageListItemBar    
     title={i.projectName}
     subtitle={i.description}
     />
-
-</ImageListItem>
-
-   </ImageList>))
+   }
+ 
+</ImageListItem>))
+}
+   </ImageList>
     
-    return projectLi
+   )  
 }
