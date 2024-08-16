@@ -1,10 +1,9 @@
 import PageCards from "../components/PageCards";
-
-type Props = {}
-
-const Resume = (props: Props) => {
+import Experince from "../components/Experince";
+  
+const Resume = () => {
     return (
-        <PageCards title='Resume'/>
+        <PageCards title='Resume' content={<Experince/>} />
     )
 }
 

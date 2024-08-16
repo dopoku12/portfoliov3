@@ -112,6 +112,10 @@ function App() {
         <Divider />
         <Outlet context={SI} />
       </Card>
+
+       <Typography sx={{margin:2}} component='footer'>
+                David Opoku ©copyright 2021
+            </Typography>
     </Container >
   )
 }

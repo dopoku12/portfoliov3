@@ -61,22 +61,18 @@ export default function Projects() {
    ].map((i)=>({...i,hoverState:false}))
 )
 const handelHoverOn=(elmIndex:number)=>{
-  
-setProjectState((prevState)=>{
-  
-  return prevState.map((item, index) => index === elmIndex? { ...item, hoverState: true } :item
-         
-      
-   )
-  })
-}
+setProjectState((prevState)=>
+ prevState.map((item, index) => 
+   index === elmIndex? { ...item, hoverState: true } :item )
+  )
+};
 
 const handelHoverOff = (elmIndex: number) => {
-  setProjectState((prevState) => {
-    return prevState.map((item, index) => index === elmIndex ?{ ...item, hoverState: false }: item
-      
-    );
-  });
+  setProjectState((prevState) =>  
+   prevState.map((item, index) => 
+      index === elmIndex ?{ ...item, hoverState: false }: item
+      )
+   );
 };
 
   return (
